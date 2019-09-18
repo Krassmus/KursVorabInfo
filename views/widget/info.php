@@ -1,0 +1,1 @@
+<?= formatReady(CourseConfig::get($course->id)->KURSVORABINFO_INFO);
