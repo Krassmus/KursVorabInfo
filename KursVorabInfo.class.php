@@ -19,7 +19,7 @@ class KursVorabInfo extends StudIPPlugin implements DetailspagePlugin, SystemPlu
                 && trim(strip_tags(formatReady(CourseConfig::get(Context::get()->id)->KURSVORABINFO_INFO)))) {
             // setup splash screen:
             $this->addStylesheet("assets/splashscreen.less");
-            PageLayout::addBodyElements('<div id="splash_screen"><div class="splash_box">'.formatReady(CourseConfig::get(Context::get()->id)->COURSE_SPLASH_SCREEN_INFO).'</div><div class="splash_box">'.\Studip\LinkButton::create(_("Gelesen und weiter zur Veranstaltung"), PluginEngine::getURL($this, array(), "referrer/".Context::get()->id)).'</div></div>');
+            PageLayout::addBodyElements('<div id="splash_screen"><div class="splash_box">'.formatReady(CourseConfig::get(Context::get()->id)->KURSVORABINFO_INFO).'</div><div class="splash_box">'.\Studip\LinkButton::create(_("Gelesen und weiter zur Veranstaltung"), PluginEngine::getURL($this, array(), "referrer/".Context::get()->id)).'</div></div>');
         }
     }
 
@@ -38,7 +38,7 @@ class KursVorabInfo extends StudIPPlugin implements DetailspagePlugin, SystemPlu
             $tf = new Flexi_TemplateFactory(__DIR__ . "/views");
 
             $template = $tf->open("widget/info");
-            $template->title = CourseConfig::get($course->id)->KURSVORABINFO_TITLE ?: _("Erklärung");
+            $template->title = CourseConfig::get($course->id)->KURSVORABINFO_TITLE ?: _("Eingangsinformationen");
             $template->course = $course;
             return $template;
         }
