@@ -8,6 +8,7 @@ class SplashController extends PluginController
             throw new AccessDeniedException();
         }
         Navigation::activateItem("/course/admin/splash");
+        PageLayout::setTitle(_("Eingangsinformationen"));
         if (Request::isPost()) {
             if (Request::submitted("save")) {
                 CourseConfig::get(Context::get()->id)->store("KURSVORABINFO_TITLE", Request::get("splash_title"));

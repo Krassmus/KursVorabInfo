@@ -15,7 +15,8 @@ class KursVorabInfo extends StudIPPlugin implements DetailspagePlugin, SystemPlu
                 && Context::get()->id
                 && !$GLOBALS['perm']->have_studip_perm("admin", Context::get()->id)
                 && !UserConfig::get($GLOBALS['user']->id)->getValue("KURSVORABINFO_VISITED_".Context::get()->id)
-                && CourseConfig::get(Context::get()->id)->KURSVORABINFO_INFO) {
+                && CourseConfig::get(Context::get()->id)->KURSVORABINFO_INFO
+                && trim(strip_tags(formatReady(CourseConfig::get(Context::get()->id)->KURSVORABINFO_INFO)))) {
             // setup splash screen:
             $this->addStylesheet("assets/splashscreen.less");
             PageLayout::addBodyElements('<div id="splash_screen"><div class="splash_box">'.formatReady(CourseConfig::get(Context::get()->id)->COURSE_SPLASH_SCREEN_INFO).'</div><div class="splash_box">'.\Studip\LinkButton::create(_("Gelesen und weiter zur Veranstaltung"), PluginEngine::getURL($this, array(), "referrer/".Context::get()->id)).'</div></div>');
